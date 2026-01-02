@@ -1,0 +1,106 @@
+{
+  "platform": "ClipCite - Fair Use Citation Infrastructure",
+  "version": "1.0",
+  "core_principle": "Assume educational intent. Provide structure for due diligence. Document compliance efforts.",
+  "collections": {
+    "clips": {
+      "description": "Individual video clips submitted for citation",
+      "fields": {
+        "clipId": "string (unique identifier)",
+        "uploaderId": "string (user who uploaded)",
+        "uploadDate": "timestamp",
+        "source": {
+          "type": "enum (UPLOAD | LINK)",
+          "description": "Whether user uploaded file or linked to existing video",
+          "linkedUrl": "string (if LINK type, the URL to original)",
+          "uploadedPath": "string (if UPLOAD type, storage location)"
+        },
+        "metadata": {
+          "auto_applied": {
+            "title": "string (film/show title, auto-detected or user-corrected)",
+            "releaseYear": "number",
+            "duration": "number (seconds)",
+            "copyrightHolder": "string (detected from database or user input)",
+            "timestamp": {
+              "start": "number (seconds into source material)",
+              "end": "number (seconds into source material)"
+            },
+            "clipDuration": "number (end - start)"
+          },
+          "user_submitted": {
+            "description": "string (what is this clip showing/why does it matter)",
+            "purpose": "enum (ACADEMIC_ESSAY | DISCUSSION | COMMENTARY | ANALYSIS | CULTURAL_REFERENCE | OTHER)",
+            "keywords": "array of strings (searchable tags)",
+            "subject": "string (trending/category tag)",
+            "citation": {
+              "format": "string (APA | MLA | Chicago | Custom)",
+              "fullCitation": "string (generated or user-provided)"
+            }
+          }
+        },
+        "compliance": {
+          "status": "enum (COMPLIANT | DMCA_NOTICE | UNDER_REVIEW | REMOVED)",
+          "dmcaHistory": "array of DMCA records",
+          "userAcknowledgment": "boolean (user confirmed they understand fair use and DMCA)"
+        },
+        "publicVisible": "boolean (whether clip appears in search/browse)"
+      }
+    },
+    "dmcaNotices": {
+      "description": "Copyright holder claims and notifications",
+      "fields": {
+        "noticeId": "string (unique identifier)",
+        "clipId": "string (reference to clip)",
+        "dateReceived": "timestamp",
+        "claimant": "string (who issued the notice)",
+        "claimantContact": "string (email or legal contact)",
+        "reason": "string (detailed claim)",
+        "status": "enum (PENDING | REVIEWED | DISPUTED | UPHELD | WITHDRAWN)",
+        "userResponse": {
+          "submitted": "boolean",
+          "date": "timestamp",
+          "fairUseArgument": "string (user's fair use defense)",
+          "evidence": "array of strings (links to their analysis/essay using the clip)"
+        },
+        "platformAction": "string (logged action and reasoning)",
+        "notes": "string (internal notes)"
+      }
+    },
+    "users": {
+      "description": "User accounts",
+      "fields": {
+        "userId": "string (unique identifier)",
+        "email": "string",
+        "username": "string",
+        "createdDate": "timestamp",
+        "profile": {
+          "displayName": "string",
+          "bio": "string",
+          "affiliation": "string (optional: student, academic, filmmaker, etc.)"
+        },
+        "clipsSubmitted": "array of clipIds",
+        "dmcaClaimsReceived": "number",
+        "dmcaDisputesWon": "number"
+      }
+    },
+    "citations": {
+      "description": "Generated citations for clips",
+      "fields": {
+        "citationId": "string",
+        "clipId": "string",
+        "format": "enum (APA | MLA | Chicago | Custom)",
+        "text": "string (full formatted citation)",
+        "generatedDate": "timestamp",
+        "userModified": "boolean"
+      }
+    }
+  },
+  "key_design_principles": {
+    "1_assume_good_faith": "Default assumption is educational/commentary use unless proven otherwise",
+    "2_document_everything": "All metadata, claims, and responses are documented for legal clarity",
+    "3_user_notification": "Users are notified of DMCA claims and can respond with fair use arguments",
+    "4_transparency": "Copyright claims are visible in clip metadata, showing good faith compliance",
+    "5_no_automation": "No automated takedowns. All claims require review and user opportunity to respond",
+    "6_fair_use_support": "Platform provides structure that strengthens fair use defense if challenged"
+  }
+}
