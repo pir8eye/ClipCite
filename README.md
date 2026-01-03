@@ -305,12 +305,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
-## Contact
+## Support ClipCite
 
-- **Website**: (coming soon)
-- **Email**: (coming soon)
-- **GitHub Issues**: Report bugs, suggest features, ask questions
-- **Discussions**: Community conversation about fair use, platform power, and digital culture
+Building fair use infrastructure takes time, resources, and expertise. If ClipCite resonates with you, consider supporting the project:
+
+🌐 **Web Hosting** - [Use DreamHost](https://click.dreamhost.com/aff_c?offer_id=8&aff_id=2406&aff_sub=&aff_sub5=/hosting/?offer_id={offer_id}&transaction_id={transaction_id}&aff_sub5=/hosting/) (affiliate link - helps fund development)
+
+☕ **Buy Me a Coffee** - [Support directly](https://buymeacoffee.com/zresearch) (one-time or recurring)
+
+Every contribution helps build the backend, improve the platform, and fight for fair use rights in digital culture.
 
 ---
 
